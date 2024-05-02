@@ -1,6 +1,6 @@
 examples:
-- txtar: |2
-
+- txtar: |
+    \
     -- nginx.yml --
     ---
     - hosts: localhost

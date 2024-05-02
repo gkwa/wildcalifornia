@@ -1,5 +1,6 @@
-{examples = [{
+{examples = [
 
+{
 txtar = r"""
 -- nginx.yml --
 ---
@@ -15,6 +16,13 @@ txtar = r"""
 -- run --
 ansible-playbook nginx.yml
 """
-}]
+}
+
+
+
+
+
+
+]
 
 }
