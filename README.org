@@ -1,0 +1,7 @@
+* wildcalifornia
+
+This is a description of my wildcalifornia.
+
+** Usage
+
+To use my project, run this command: ./wildcalifornia --verbose
