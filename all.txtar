@@ -1,5 +1,7 @@
+-- example-010/nginx.yml --
 ---
-- hosts: all
+- hosts: localhost
+  connection: local
   become: true
 
   tasks:
@@ -7,3 +9,5 @@
       ansible.builtin.package:
         name: nginx
         state: present
+-- example-010/run --
+ansible-playbook nginx.yml
