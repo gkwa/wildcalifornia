@@ -1,0 +1,20 @@
+{examples = [{
+
+txtar = r"""
+-- nginx.yml --
+---
+- hosts: localhost
+  connection: local
+  become: true
+
+  tasks:
+    - name: Install nginx
+      ansible.builtin.package:
+        name: nginx
+        state: present
+-- run --
+ansible-playbook nginx.yml
+"""
+}]
+
+}
