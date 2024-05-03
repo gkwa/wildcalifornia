@@ -502,6 +502,7 @@ ansible-playbook -vvv mypackages.yml
 
 -- ansible.cfg --
 [defaults]
+ansible_python_interpreter=/home/linuxbrew/.linuxbrew/opt/python@3.12/libexec/bin/python
 interpreter_python=/home/linuxbrew/.linuxbrew/opt/python@3.12/libexec/bin/python
 
 
@@ -528,6 +529,48 @@ ANSIBLE_CONFIG=./ansible.cfg ansible-playbook -vvv mypackages.yml
 """
     }
 
+
+
+
+
+
+
+    {
+        notes = r"""
+
+      """
+        disabled = True
+        txtar = r"""
+
+
+
+
+-- mypackages.yml --
+---
+- hosts: localhost
+
+  vars:
+    ansible_python_interpreter: /home/linuxbrew/.linuxbrew/opt/python@3.12/libexec/bin/python
+    interpreter_python: /home/linuxbrew/.linuxbrew/opt/python@3.12/libexec/bin/python
+
+  tasks:
+
+    - name: Debug current environment
+      debug:
+        var: ansible_python_version
+
+
+    - name: Install jq
+      apt:
+        name:
+          - jq
+        state: present
+
+-- run --
+ANSIBLE_CONFIG=./ansible.cfg ansible-playbook -vvv mypackages.yml
+
+"""
+    }
 
 
 
