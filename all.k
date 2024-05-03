@@ -55,6 +55,11 @@ txtar = r"""
   connection: local
   become: true
 
+
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+
+
   tasks:
     - name: Install nginx
       ansible.builtin.package:
@@ -112,6 +117,10 @@ txtar = r"""
 - hosts: localhost
   connection: local
   become: true
+
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+
 
   tasks:
    - name: Install jq and nginx
@@ -215,7 +224,7 @@ root@ip-172-31-31-195:~/wildcalifornia#
 {
 
 
-txtar=r"""
+txtar = r"""
 
 
 -- inventory.yml --
