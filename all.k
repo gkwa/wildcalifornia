@@ -322,6 +322,17 @@ ansible-playbook -vvv mypackages.yml
 
 
     {
+
+
+            notes = r"""
+
+
+
+this works as expected
+      """
+
+
+
         disabled = True
         txtar = r"""
 -- mypackages.yml --
@@ -347,6 +358,15 @@ ansible-playbook -vvv mypackages.yml
 
 
     {
+
+      notes = r"""
+
+
+
+this works as expected
+      """
+
+
         disabled = True
         txtar = r"""
 -- mypackages.yml --
