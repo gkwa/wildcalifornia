@@ -309,7 +309,7 @@ LANG=C.UTF-8 ansible-playbook -vvv mypackages.yml
 
 
 -- run --
-LANG=C.UTF-8 ansible-playbook -vvv mypackages.yml
+ansible-playbook -vvv mypackages.yml
 """
 
     }
