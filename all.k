@@ -40,9 +40,6 @@ root@u:~/example-001#
       debug:
         var: ansible_python_version
 
-
-
-
     - name: Install nginx
       ansible.builtin.package:
         name: nginx
@@ -91,11 +88,9 @@ root@u:~/example-001#
 
   tasks:
 
-    - name: Debug current environment
-      debug:
-        var: ansible_python_version
-
-
+   - name: Debug current environment
+     debug:
+       var: ansible_python_version
 
 
    - name: Install jq and nginx
@@ -139,9 +134,10 @@ root@ip-172-31-31-195:~/wildcalifornia#
 
   tasks:
 
-    - name: Debug current environment
-      debug:
-        var: ansible_python_version
+   - name: Debug current environment
+     debug:
+       var: ansible_python_version
+
 
 
 
@@ -184,9 +180,9 @@ root@ip-172-31-31-195:~/wildcalifornia# cat mypackages.yml
 
   tasks:
 
-    - name: Debug current environment
-      debug:
-        var: ansible_python_version
+   - name: Debug current environment
+     debug:
+       var: ansible_python_version
 
 
 
@@ -224,9 +220,9 @@ all:
 
   tasks:
 
-    - name: Debug current environment
-      debug:
-        var: ansible_python_version
+   - name: Debug current environment
+     debug:
+       var: ansible_python_version
 
 
 
@@ -281,9 +277,9 @@ root@ip-172-31-31-195:~/wildcalifornia#
 
   tasks:
 
-    - name: Debug current environment
-      debug:
-        var: ansible_python_version
+   - name: Debug current environment
+     debug:
+       var: ansible_python_version
 
 
 
@@ -311,9 +307,9 @@ ansible-playbook -vvv mypackages.yml
 
   tasks:
 
-    - name: Debug current environment
-      debug:
-        var: ansible_python_version
+   - name: Debug current environment
+     debug:
+       var: ansible_python_version
 
 
 
@@ -370,9 +366,9 @@ ansible-playbook -vvv mypackages.yml
 
   tasks:
 
-    - name: Debug current environment
-      debug:
-        var: ansible_python_version
+   - name: Debug current environment
+     debug:
+       var: ansible_python_version
 
 
 
@@ -445,9 +441,6 @@ symlink works as expected
       debug:
         var: ansible_python_version
 
-
-
-
     - name: Install jq
       apt:
         name:
@@ -484,9 +477,6 @@ this works as expected
       debug:
         var: ansible_python_version
 
-
-
-
     - name: Install jq
       apt:
         name:
@@ -508,12 +498,6 @@ ansible-playbook -vvv mypackages.yml
       """
         disabled = True
         txtar = r"""
-
-
-
-
-
-
 
 
 -- ansible.cfg --
