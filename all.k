@@ -1,4 +1,43 @@
-{examples = [
+{
+
+
+  unique_ids = r"""
+silly goose
+playful kitten
+majestic lion
+curious monkey
+graceful swan
+mischievous squirrel
+loyal dog
+wise owl
+nimble gazelle
+mighty elephant
+clever fox
+gentle giraffe
+energetic puppy
+sneaky raccoon
+brave wolf
+friendly dolphin
+lazy sloth
+fierce tiger
+humble hedgehog
+swift cheetah
+clumsy penguin
+cunning coyote
+timid rabbit
+proud peacock
+agile leopard
+adventurous otter
+charming koala
+witty parrot
+noble stag
+resilient kangaroo
+
+"""
+
+
+
+  examples = [
     {
         disabled = True
         notes = r"""
