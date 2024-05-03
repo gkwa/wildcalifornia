@@ -451,10 +451,6 @@ symlink works as expected
 ansible-playbook -vvv mypackages.yml
 """
     }
-
-
-
-
     {
         notes = r"""
 
@@ -487,11 +483,6 @@ this works as expected
 ansible-playbook -vvv mypackages.yml
 """
     }
-
-
-
-
-
     {
         notes = r"""
 
@@ -528,13 +519,6 @@ ANSIBLE_CONFIG=./ansible.cfg ansible-playbook -vvv mypackages.yml
 
 """
     }
-
-
-
-
-
-
-
     {
         notes = r"""
 
@@ -572,12 +556,6 @@ ANSIBLE_CONFIG=./ansible.cfg ansible-playbook -vvv mypackages.yml
 
 """
     }
-
-
-
-
-
-
     {
         notes = r"""
 
@@ -615,10 +593,6 @@ ANSIBLE_CONFIG=./ansible.cfg ansible-playbook -vvv mypackages.yml
 
 """
     }
-
-
-
-
     {
         notes = r"""
 
@@ -660,24 +634,6 @@ ansible-playbook -vvv mypackages.yml
 
 """
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     {
         notes = r"""
 
@@ -720,15 +676,4 @@ ansible-playbook -vvv mypackages.yml
 
 """
     }
-
-
-
-
-
-
-
-
-
-
-
 ]}
