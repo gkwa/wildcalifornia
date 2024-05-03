@@ -35,6 +35,14 @@ root@u:~/example-001#
   become: true
 
   tasks:
+
+    - name: Debug current environment
+      debug:
+        var: ansible_python_version
+
+
+
+
     - name: Install nginx
       ansible.builtin.package:
         name: nginx
@@ -82,6 +90,14 @@ root@u:~/example-001#
   become: true
 
   tasks:
+
+    - name: Debug current environment
+      debug:
+        var: ansible_python_version
+
+
+
+
    - name: Install jq and nginx
      ansible.builtin.package:
        name:
@@ -122,6 +138,14 @@ root@ip-172-31-31-195:~/wildcalifornia#
     ansible_python_interpreter: /usr/bin/python3
 
   tasks:
+
+    - name: Debug current environment
+      debug:
+        var: ansible_python_version
+
+
+
+
    - name: Install jq and nginx
      ansible.builtin.package:
        name:
@@ -159,6 +183,14 @@ root@ip-172-31-31-195:~/wildcalifornia# cat mypackages.yml
     ansible_python_interpreter: /usr/bin/python3
 
   tasks:
+
+    - name: Debug current environment
+      debug:
+        var: ansible_python_version
+
+
+
+
    - name: Install jq and nginx
      ansible.builtin.package:
        name:
@@ -191,6 +223,14 @@ all:
   become: true
 
   tasks:
+
+    - name: Debug current environment
+      debug:
+        var: ansible_python_version
+
+
+
+
    - name: Install jq and nginx
      ansible.builtin.package:
        name:
@@ -240,6 +280,14 @@ root@ip-172-31-31-195:~/wildcalifornia#
     ansible_python_interpreter: /home/linuxbrew/.linuxbrew/bin/python3.8
 
   tasks:
+
+    - name: Debug current environment
+      debug:
+        var: ansible_python_version
+
+
+
+
    - name: Install jq and nginx
      ansible.builtin.package:
        name:
@@ -262,6 +310,14 @@ ansible-playbook -vvv mypackages.yml
     ansible_python_interpreter: /home/linuxbrew/.linuxbrew/bin/python3.8
 
   tasks:
+
+    - name: Debug current environment
+      debug:
+        var: ansible_python_version
+
+
+
+
    - name: Install jq and nginx
      ansible.builtin.package:
        name:
@@ -282,6 +338,14 @@ LANG=C.UTF-8 ansible-playbook -vvv mypackages.yml
     LANG: en_US.UTF-8
     LC_ALL: en_US.UTF-8
   tasks:
+
+    - name: Debug current environment
+      debug:
+        var: ansible_python_version
+
+
+
+
     - name: Install jq
       apt:
         name:
@@ -305,6 +369,14 @@ ansible-playbook -vvv mypackages.yml
     ansible_python_interpreter: /home/linuxbrew/.linuxbrew/bin/python3
 
   tasks:
+
+    - name: Debug current environment
+      debug:
+        var: ansible_python_version
+
+
+
+
    - name: Install jq and nginx
      ansible.builtin.package:
        name:
@@ -332,6 +404,14 @@ real path, not symlink works as expected
     ansible_python_interpreter: "/home/linuxbrew/.linuxbrew/Cellar/python@3.12/3.12.3/bin/python3.12"
 
   tasks:
+
+    - name: Debug current environment
+      debug:
+        var: ansible_python_version
+
+
+
+
     - name: Install jq
       apt:
         name:
@@ -360,6 +440,14 @@ symlink works as expected
     ansible_python_interpreter: /home/linuxbrew/.linuxbrew/opt/python@3.12/libexec/bin/python
 
   tasks:
+
+    - name: Debug current environment
+      debug:
+        var: ansible_python_version
+
+
+
+
     - name: Install jq
       apt:
         name:
@@ -391,6 +479,14 @@ this works as expected
 - hosts: localhost
 
   tasks:
+
+    - name: Debug current environment
+      debug:
+        var: ansible_python_version
+
+
+
+
     - name: Install jq
       apt:
         name:
