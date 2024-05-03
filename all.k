@@ -34,9 +34,6 @@ root@u:~/example-001#
   connection: local
   become: true
 
-
-
-
   tasks:
     - name: Install nginx
       ansible.builtin.package:
@@ -83,7 +80,6 @@ root@u:~/example-001#
 - hosts: localhost
   connection: local
   become: true
-
 
   tasks:
    - name: Install jq and nginx
