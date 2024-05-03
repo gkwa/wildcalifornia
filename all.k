@@ -20,7 +20,7 @@ disabled=True
 
 notes=r"""
 
-this fails with local error
+this fails on ubuntu:focal container with local error:
 
 
 + ansible-playbook nginx.yml
@@ -76,7 +76,7 @@ notes=r"""
 Example of how to install many packages in one call to ansible.builtin.package
 
 
-this fails with local error
+this fails on ubuntu:focal container with local error:
 
 
 + ansible-playbook nginx.yml
