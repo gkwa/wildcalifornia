@@ -20,9 +20,6 @@ https://stackoverflow.com/a/62482559/1495086
 
     # each record should have a unique name.  here's a list of names you can use
     unique_ids = r"""
-lazy sloth
-fierce tiger
-swift cheetah
 clumsy penguin
 cunning coyote
 timid rabbit
@@ -758,6 +755,147 @@ ansible-playbook -vvv mypackages.yml
 
 """
         }
+
+
+
+        ########################################################################################################
+        {
+            notes = r"""
+
+
+using real path instead of symlink fails to override in this case
+
+
+https://docs.ansible.com/ansible/latest/reference_appendices/config.html
+
+
+The configuration file
+Changes can be made and used in a configuration file which will be searched for in the following order:
+
+ANSIBLE_CONFIG (environment variable if set)
+
+ansible.cfg (in the current directory)
+
+~/.ansible.cfg (in the home directory)
+
+/etc/ansible/ansible.cfg
+
+Ansible will process the above list and use the first file found, all others are ignored.
+
+      """
+            override_interpeter_works = False
+            disabled = True
+            name = "swift cheetah"
+            txtar = r"""
+-- ansible.cfg --
+[defaults]
+ansible_python_interpreter=/home/linuxbrew/.linuxbrew/Cellar/python@3.12/3.12.3/bin/python3.12
+interpreter_python=/home/linuxbrew/.linuxbrew/Cellar/python@3.12/3.12.3/bin/python3.12
+
+
+-- mypackages.yml --
+---
+- hosts: localhost
+
+  tasks:
+
+    - name: Debug current environment
+      debug:
+        var: ansible_python_version
+
+    - name: Install jq
+      apt:
+        name:
+          - jq
+        state: present
+
+-- run --
+ansible-playbook -vvv mypackages.yml
+
+"""
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        ########################################################################################################
+        {
+            notes = r"""
+
+
+
+
+https://docs.ansible.com/ansible/latest/reference_appendices/config.html
+
+
+The configuration file
+Changes can be made and used in a configuration file which will be searched for in the following order:
+
+ANSIBLE_CONFIG (environment variable if set)
+
+ansible.cfg (in the current directory)
+
+~/.ansible.cfg (in the home directory)
+
+/etc/ansible/ansible.cfg
+
+Ansible will process the above list and use the first file found, all others are ignored.
+
+      """
+            override_interpeter_works = False
+            disabled = True
+            name = "fierce tiger"
+            txtar = r"""
+
+-- ansible.cfg --
+[defaults]
+ansible_python_interpreter=/home/linuxbrew/.linuxbrew/Cellar/python@3.12/3.12.3/bin/python3.12
+interpreter_python=/home/linuxbrew/.linuxbrew/Cellar/python@3.12/3.12.3/bin/python3.12
+
+
+
+-- mypackages.yml --
+---
+- hosts: localhost
+  connection: local
+  become: true
+
+  tasks:
+
+    - name: Debug current environment
+      debug:
+        var: ansible_python_version
+
+    - name: Install jq
+      apt:
+        name:
+          - jq
+        state: present
+
+-- run --
+ansible-playbook -vvv mypackages.yml
+
+"""
+        }
+
+
+
+
+
+
 
 
     ]
