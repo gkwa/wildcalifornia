@@ -319,7 +319,7 @@ ansible-playbook -vvv mypackages.yml
 
 
 
-this works as expected
+real path, not symlink works as expected
       """
         disabled = True
         txtar = r"""
@@ -327,7 +327,8 @@ this works as expected
 ---
 - hosts: localhost
   vars:
-    #ansible_python_interpreter: "{{ lookup('env', 'HOME') }}/.linuxbrew/opt/python@3.12/libexec/bin/python"
+
+    # real path, not symlink
     ansible_python_interpreter: "/home/linuxbrew/.linuxbrew/Cellar/python@3.12/3.12.3/bin/python3.12"
 
   tasks:
@@ -346,7 +347,7 @@ ansible-playbook -vvv mypackages.yml
 
 
 
-this works as expected
+symlink works as expected
       """
         disabled = True
         txtar = r"""
@@ -354,6 +355,8 @@ this works as expected
 ---
 - hosts: localhost
   vars:
+
+    # symlink
     ansible_python_interpreter: /home/linuxbrew/.linuxbrew/opt/python@3.12/libexec/bin/python
 
   tasks:
@@ -367,4 +370,74 @@ this works as expected
 ansible-playbook -vvv mypackages.yml
 """
     }
+
+
+
+
+    {
+        notes = r"""
+
+
+
+this works as expected
+      """
+        disabled = True
+        txtar = r"""
+
+
+
+-- mypackages.yml --
+---
+- hosts: localhost
+
+  tasks:
+    - name: Install jq
+      apt:
+        name:
+          - jq
+        state: present
+
+-- run --
+ansible-playbook -vvv mypackages.yml
+"""
+    }
+
+
+
+
+
+    {
+        notes = r"""
+
+      """
+        disabled = True
+        txtar = r"""
+
+
+-- ansible.cfg --
+[defaults]
+interpreter_python=/home/linuxbrew/.linuxbrew/opt/python@3.12/libexec/bin/python
+
+
+-- mypackages.yml --
+---
+- hosts: localhost
+
+  tasks:
+    - name: Install jq
+      apt:
+        name:
+          - jq
+        state: present
+
+-- run --
+ansible-playbook -vvv mypackages.yml
+
+"""
+    }
+
+
+
+
+
 ]}
