@@ -18,6 +18,7 @@ resilient kangaroo
 """
     examples = [
         {
+            override_interpeter_works = False
             disabled = True
             notes = r"""
 
@@ -47,7 +48,7 @@ root@u:~/example-001#
 """
             name = "silly goose"
             txtar = r"""
--- nginx.yml --
+-- jq.yml --
 ---
 - hosts: localhost
   connection: local
@@ -59,15 +60,17 @@ root@u:~/example-001#
       debug:
         var: ansible_python_version
 
-    - name: Install nginx
+    - name: Install jq
       ansible.builtin.package:
-        name: nginx
+        name: jq
         state: present
 -- run --
-ansible-playbook -vvv nginx.yml
+ansible-playbook -vvv jq.yml
 """
         }
+        ########################################################################################################
         {
+            override_interpeter_works = False
             disabled = True
             notes = r"""
 
@@ -117,7 +120,6 @@ root@u:~/example-001#
      ansible.builtin.package:
        name:
          - jq
-         - nginx
        state: present
 -- run --
 ansible-playbook -vvv mypackages.yml
@@ -141,6 +143,7 @@ localhost                  : ok=2    changed=0    unreachable=0    failed=0    s
 root@ip-172-31-31-195:~/wildcalifornia#
 """
         }
+        ########################################################################################################
         {
             name = "majestic lion"
             txtar = r"""
@@ -159,11 +162,7 @@ root@ip-172-31-31-195:~/wildcalifornia#
      debug:
        var: ansible_python_version
 
-
-
-
-
-   - name: Install jq and nginx
+   - name: Install jq
      ansible.builtin.package:
        name:
          - jq
@@ -217,7 +216,9 @@ root@ip-172-31-31-195:~/wildcalifornia#
 
 """
         }
+        ########################################################################################################
         {
+            override_interpeter_works = False
             name = "curious monkey"
             txtar = r"""
 
@@ -285,6 +286,7 @@ root@ip-172-31-31-195:~/wildcalifornia#
 
 """
         }
+        ########################################################################################################
         {
             disabled = True
             name = "graceful swan"
@@ -316,6 +318,7 @@ root@ip-172-31-31-195:~/wildcalifornia#
 ansible-playbook -vvv mypackages.yml
 """
         }
+        ########################################################################################################
         {
             disabled = True
             name = "mischievous squirrel"
@@ -347,6 +350,7 @@ ansible-playbook -vvv mypackages.yml
 LANG=C.UTF-8 ansible-playbook -vvv mypackages.yml
 """
         }
+        ########################################################################################################
         {
             name = "loyal dog"
             txtar = r"""
@@ -379,6 +383,7 @@ LANG=C.UTF-8 ansible-playbook -vvv mypackages.yml
 ansible-playbook -vvv mypackages.yml
 """
         }
+        ########################################################################################################
         {
             override_interpeter_works = True
             disabled = True
@@ -411,6 +416,7 @@ ansible-playbook -vvv mypackages.yml
 ansible-playbook -vvv mypackages.yml
 """
         }
+        ########################################################################################################
         {
             override_interpeter_works = True
             disabled = True
@@ -443,6 +449,7 @@ ansible-playbook -vvv mypackages.yml
 ansible-playbook -vvv mypackages.yml
 """
         }
+        ########################################################################################################
         {
             override_interpeter_works = True
             disabled = True
@@ -472,6 +479,7 @@ ansible-playbook -vvv mypackages.yml
 ansible-playbook -vvv mypackages.yml
 """
         }
+        ########################################################################################################
         {
             override_interpeter_works = True
             disabled = True
@@ -500,6 +508,7 @@ ansible-playbook -vvv mypackages.yml
 ansible-playbook -vvv mypackages.yml
 """
         }
+        ########################################################################################################
         {
             notes = r"""
 
@@ -507,8 +516,6 @@ ansible-playbook -vvv mypackages.yml
             disabled = True
             name = "gentle giraffe"
             txtar = r"""
-
-
 -- ansible.cfg --
 [defaults]
 ansible_python_interpreter=/home/linuxbrew/.linuxbrew/opt/python@3.12/libexec/bin/python
@@ -537,6 +544,7 @@ ANSIBLE_CONFIG=./ansible.cfg ansible-playbook -vvv mypackages.yml
 
 """
         }
+        ########################################################################################################
         {
             notes = r"""
 
@@ -547,10 +555,6 @@ this works to ovverride python.  With this, we correctly use python 3.12
             disabled = True
             name = "energetic puppy"
             txtar = r"""
-
-
-
-
 -- mypackages.yml --
 ---
 - hosts: localhost
@@ -576,15 +580,12 @@ ANSIBLE_CONFIG=./ansible.cfg ansible-playbook -vvv mypackages.yml
 
 """
         }
+        ########################################################################################################
         {
             override_interpeter_works = False
             disabled = True
             name = "sneaky raccoon"
             txtar = r"""
-
-
-
-
 -- mypackages.yml --
 ---
 - hosts: localhost
@@ -610,6 +611,7 @@ ANSIBLE_CONFIG=./ansible.cfg ansible-playbook -vvv mypackages.yml
 
 """
         }
+        ########################################################################################################
         {
             override_interpeter_works = False
             disabled = True
@@ -646,6 +648,7 @@ ansible-playbook -vvv mypackages.yml
 
 """
         }
+        ########################################################################################################
         {
             override_interpeter_works = False
             disabled = True
