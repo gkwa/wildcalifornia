@@ -1,23 +1,6 @@
 {
-
-
-  unique_ids = r"""
-silly goose
-playful kitten
-majestic lion
-curious monkey
-graceful swan
-mischievous squirrel
-loyal dog
-wise owl
-nimble gazelle
-mighty elephant
-clever fox
-gentle giraffe
-energetic puppy
-sneaky raccoon
-brave wolf
-friendly dolphin
+    # each record should have a unique name.  here's a list of names you can use
+    unique_ids = r"""
 lazy sloth
 fierce tiger
 humble hedgehog
@@ -32,15 +15,11 @@ charming koala
 witty parrot
 noble stag
 resilient kangaroo
-
 """
-
-
-
-  examples = [
-    {
-        disabled = True
-        notes = r"""
+    examples = [
+        {
+            disabled = True
+            notes = r"""
 
 this fails on ubuntu:focal container with local error:
 
@@ -66,7 +45,8 @@ localhost                  : ok=1    changed=0    unreachable=0    failed=1    s
 root@u:~/example-001#
 
 """
-        txtar = r"""
+            name = "silly goose"
+            txtar = r"""
 -- nginx.yml --
 ---
 - hosts: localhost
@@ -86,10 +66,10 @@ root@u:~/example-001#
 -- run --
 ansible-playbook -vvv nginx.yml
 """
-    }
-    {
-        disabled = True
-        notes = r"""
+        }
+        {
+            disabled = True
+            notes = r"""
 
 Example of how to install many packages in one call to ansible.builtin.package
 
@@ -118,7 +98,8 @@ localhost                  : ok=1    changed=0    unreachable=0    failed=1    s
 root@u:~/example-001#
 
 """
-        txtar = r"""
+            name = "playful kitten"
+            txtar = r"""
 -- mypackages.yml --
 ---
 - hosts: localhost
@@ -141,7 +122,7 @@ root@u:~/example-001#
 -- run --
 ansible-playbook -vvv mypackages.yml
 """
-        output = r"""
+            output = r"""
 root@ip-172-31-31-195:~/wildcalifornia# ansible-playbook mypackages.yml
 [WARNING]: No inventory was parsed, only implicit localhost is available
 [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
@@ -159,9 +140,10 @@ localhost                  : ok=2    changed=0    unreachable=0    failed=0    s
 
 root@ip-172-31-31-195:~/wildcalifornia#
 """
-    }
-    {
-        txtar = r"""
+        }
+        {
+            name = "majestic lion"
+            txtar = r"""
 -- mypackages.yml --
 ---
 - hosts: localhost
@@ -189,7 +171,7 @@ root@ip-172-31-31-195:~/wildcalifornia#
 -- run --
 ansible-playbook -vvv mypackages.yml
 """
-        output = r"""
+            output = r"""
 
 
 root@ip-172-31-31-195:~/wildcalifornia# bash -ex run
@@ -234,9 +216,10 @@ root@ip-172-31-31-195:~/wildcalifornia# cat mypackages.yml
 root@ip-172-31-31-195:~/wildcalifornia#
 
 """
-    }
-    {
-        txtar = r"""
+        }
+        {
+            name = "curious monkey"
+            txtar = r"""
 
 
 -- inventory.yml --
@@ -278,11 +261,11 @@ all:
 ansible-playbook -vvv -i inventory.yml playbook.yml
 
 """
-        notes = r"""
+            notes = r"""
 This is the first to not give inventory warning, yay!
 
 """
-        output = r"""
+            output = r"""
 
 root@ip-172-31-31-195:~/wildcalifornia# bash -ex run
 + ansible-playbook -i inventory.yml playbook.yml
@@ -301,10 +284,11 @@ localhost                  : ok=2    changed=0    unreachable=0    failed=0    s
 root@ip-172-31-31-195:~/wildcalifornia#
 
 """
-    }
-    {
-        disabled = True
-        txtar = r"""
+        }
+        {
+            disabled = True
+            name = "graceful swan"
+            txtar = r"""
 -- mypackages.yml --
 ---
 - hosts: localhost
@@ -331,10 +315,11 @@ root@ip-172-31-31-195:~/wildcalifornia#
 -- run --
 ansible-playbook -vvv mypackages.yml
 """
-    }
-    {
-        disabled = True
-        txtar = r"""
+        }
+        {
+            disabled = True
+            name = "mischievous squirrel"
+            txtar = r"""
 -- mypackages.yml --
 ---
 - hosts: localhost
@@ -361,8 +346,10 @@ ansible-playbook -vvv mypackages.yml
 -- run --
 LANG=C.UTF-8 ansible-playbook -vvv mypackages.yml
 """
-    }
-    {txtar = r"""
+        }
+        name
+        "loyal dog"
+        {txtar = r"""
 
 -- mypackages.yml --
 ---
@@ -391,9 +378,10 @@ LANG=C.UTF-8 ansible-playbook -vvv mypackages.yml
 -- run --
 ansible-playbook -vvv mypackages.yml
 """}
-    {
-        disabled = True
-        txtar = r"""
+        {
+            disabled = True
+            name = "wise owl"
+            txtar = r"""
 -- mypackages.yml --
 ---
 - hosts: localhost
@@ -420,16 +408,17 @@ ansible-playbook -vvv mypackages.yml
 -- run --
 ansible-playbook -vvv mypackages.yml
 """
-    }
-    {
-        notes = r"""
+        }
+        {
+            notes = r"""
 
 
 
 real path, not symlink works as expected
       """
-        disabled = True
-        txtar = r"""
+            disabled = True
+            name = "nimble gazelle"
+            txtar = r"""
 -- mypackages.yml --
 ---
 - hosts: localhost
@@ -456,16 +445,17 @@ real path, not symlink works as expected
 -- run --
 ansible-playbook -vvv mypackages.yml
 """
-    }
-    {
-        notes = r"""
+        }
+        {
+            notes = r"""
 
 
 
 symlink works as expected
       """
-        disabled = True
-        txtar = r"""
+            disabled = True
+            name = "mighty elephant"
+            txtar = r"""
 -- mypackages.yml --
 ---
 - hosts: localhost
@@ -489,16 +479,17 @@ symlink works as expected
 -- run --
 ansible-playbook -vvv mypackages.yml
 """
-    }
-    {
-        notes = r"""
+        }
+        {
+            notes = r"""
 
 
 
 this works as expected
       """
-        disabled = True
-        txtar = r"""
+            disabled = True
+            name = "clever fox"
+            txtar = r"""
 
 
 
@@ -521,13 +512,14 @@ this works as expected
 -- run --
 ansible-playbook -vvv mypackages.yml
 """
-    }
-    {
-        notes = r"""
+        }
+        {
+            notes = r"""
 
       """
-        disabled = True
-        txtar = r"""
+            disabled = True
+            name = "gentle giraffe"
+            txtar = r"""
 
 
 -- ansible.cfg --
@@ -557,15 +549,16 @@ interpreter_python=/home/linuxbrew/.linuxbrew/opt/python@3.12/libexec/bin/python
 ANSIBLE_CONFIG=./ansible.cfg ansible-playbook -vvv mypackages.yml
 
 """
-    }
-    {
-        notes = r"""
+        }
+        {
+            notes = r"""
 
 this works to ovverride python.  With this, we correctly use python 3.12
 
       """
-        disabled = True
-        txtar = r"""
+            disabled = True
+            name = "energetic puppy"
+            txtar = r"""
 
 
 
@@ -594,15 +587,16 @@ this works to ovverride python.  With this, we correctly use python 3.12
 ANSIBLE_CONFIG=./ansible.cfg ansible-playbook -vvv mypackages.yml
 
 """
-    }
-    {
-        notes = r"""
+        }
+        {
+            notes = r"""
 
 this fails to ovverride python
 
       """
-        disabled = True
-        txtar = r"""
+            disabled = True
+            name = "sneaky raccoon"
+            txtar = r"""
 
 
 
@@ -631,17 +625,18 @@ this fails to ovverride python
 ANSIBLE_CONFIG=./ansible.cfg ansible-playbook -vvv mypackages.yml
 
 """
-    }
-    {
-        notes = r"""
+        }
+        {
+            notes = r"""
 
 this fails to override python
 
 trying to use python 3.12, but still it uses 3.8
 
       """
-        disabled = True
-        txtar = r"""
+            disabled = True
+            name = "brave wolf"
+            txtar = r"""
 
 
 -- ansible.cfg --
@@ -672,9 +667,9 @@ export ANSIBLE_CONFIG=./ansible.cfg
 ansible-playbook -vvv mypackages.yml
 
 """
-    }
-    {
-        notes = r"""
+        }
+        {
+            notes = r"""
 
 
 this fails to override python
@@ -684,8 +679,9 @@ trying to use python 3.12, but still it uses 3.8
 
 
       """
-        disabled = True
-        txtar = r"""
+            disabled = True
+            name = "friendly dolphin"
+            txtar = r"""
 
 
 
@@ -714,5 +710,6 @@ ansible-playbook -vvv mypackages.yml
 
 
 """
-    }
-]}
+        }
+    ]
+}
