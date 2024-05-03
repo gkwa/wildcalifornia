@@ -283,4 +283,41 @@ LANG=C.UTF-8 ansible-playbook -vvv mypackages.yml
     }
 
 
+
+
+
+
+
+
+    {
+        txtar = r"""
+
+-- mypackages.yml --
+---
+
+
+- hosts: localhost
+  environment:
+    LANG: en_US.UTF-8
+    LC_ALL: en_US.UTF-8
+  tasks:
+    - name: Install jq
+      apt:
+        name:
+          - jq
+        state: present
+
+
+-- run --
+LANG=C.UTF-8 ansible-playbook -vvv mypackages.yml
+"""
+
+    }
+
+
+
+
+
+
+
 ]}
