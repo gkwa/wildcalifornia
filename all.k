@@ -431,7 +431,7 @@ interpreter_python=/home/linuxbrew/.linuxbrew/opt/python@3.12/libexec/bin/python
         state: present
 
 -- run --
-ansible-playbook -vvv mypackages.yml
+ANSIBLE_CONFIG=./ansible.cfg ansible-playbook -vvv mypackages.yml
 
 """
     }
