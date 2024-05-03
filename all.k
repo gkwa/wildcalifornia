@@ -1,6 +1,48 @@
 {examples = [
 
 
+{
+
+
+
+txtar=r"""
+-- run --
+ansible-playbook playbook.yml
+
+-- playbook.yml --
+---
+
+- name: Set locale
+  ansible.builtin.command: update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
+  become: yes
+
+- name: Install apt dependencies
+  ansible.builtin.apt:
+    pkg:
+      - locales
+      - language-pack-en
+    state: present
+  become: yes
+
+- name: Reconfigure locales
+  ansible.builtin.command: dpkg-reconfigure locales
+  become: yes
+
+- name: Install nginx
+  ansible.builtin.apt:
+    name: nginx
+    state: present
+  become: yes
+  """
+}
+
+
+
+
+
+
+
+
 
 {
 txtar = r"""
