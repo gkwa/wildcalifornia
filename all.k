@@ -347,9 +347,9 @@ ansible-playbook -vvv mypackages.yml
 LANG=C.UTF-8 ansible-playbook -vvv mypackages.yml
 """
         }
-        name
-        "loyal dog"
-        {txtar = r"""
+        {
+            name = "loyal dog"
+            txtar = r"""
 
 -- mypackages.yml --
 ---
@@ -377,7 +377,8 @@ LANG=C.UTF-8 ansible-playbook -vvv mypackages.yml
 
 -- run --
 ansible-playbook -vvv mypackages.yml
-"""}
+"""
+        }
         {
             disabled = True
             name = "wise owl"
