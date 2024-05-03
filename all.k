@@ -40,7 +40,7 @@ root@u:~/example-001#
         name: nginx
         state: present
 -- run --
-ansible-playbook nginx.yml
+ansible-playbook -vvv nginx.yml
 """
     }
     {
@@ -89,7 +89,7 @@ root@u:~/example-001#
          - nginx
        state: present
 -- run --
-ansible-playbook mypackages.yml
+ansible-playbook -vvv mypackages.yml
 """
         output = r"""
 root@ip-172-31-31-195:~/wildcalifornia# ansible-playbook mypackages.yml
@@ -128,7 +128,7 @@ root@ip-172-31-31-195:~/wildcalifornia#
          - jq
        state: present
 -- run --
-ansible-playbook mypackages.yml
+ansible-playbook -vvv mypackages.yml
 """
         output = r"""
 
@@ -200,8 +200,7 @@ all:
 
 
 -- run --
-
-ansible-playbook -i inventory.yml playbook.yml
+ansible-playbook -vvv -i inventory.yml playbook.yml
 
 """
         notes = r"""
@@ -228,4 +227,46 @@ root@ip-172-31-31-195:~/wildcalifornia#
 
 """
     }
+
+
+
+
+
+
+    {
+        txtar = r"""
+-- mypackages.yml --
+---
+- hosts: localhost
+  connection: local
+  become: true
+
+  vars:
+    ansible_python_interpreter: /home/linuxbrew/.linuxbrew/bin/python3.8
+
+  tasks:
+   - name: Install jq and nginx
+     ansible.builtin.package:
+       name:
+         - jq
+       state: present
+-- run --
+ansible-playbook -vvv mypackages.yml
+"""
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+
+
 ]}
