@@ -414,6 +414,12 @@ ansible-playbook -vvv mypackages.yml
         txtar = r"""
 
 
+
+
+
+
+
+
 -- ansible.cfg --
 [defaults]
 interpreter_python=/home/linuxbrew/.linuxbrew/opt/python@3.12/libexec/bin/python
@@ -424,6 +430,12 @@ interpreter_python=/home/linuxbrew/.linuxbrew/opt/python@3.12/libexec/bin/python
 - hosts: localhost
 
   tasks:
+
+    - name: Debug current environment
+      debug:
+        var: ansible_python_version
+
+
     - name: Install jq
       apt:
         name:
