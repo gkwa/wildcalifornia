@@ -380,11 +380,7 @@ ansible-playbook -vvv mypackages.yml
 """
         }
         {
-            notes = r"""
-
-          this overrides as expected
-
-          """
+            override_interpeter_works = True
             disabled = True
             name = "wise owl"
             txtar = r"""
@@ -416,10 +412,7 @@ ansible-playbook -vvv mypackages.yml
 """
         }
         {
-            notes = r"""
-this overrides as expected
-real path works as expected
-      """
+            override_interpeter_works = True
             disabled = True
             name = "nimble gazelle"
             txtar = r"""
@@ -451,10 +444,7 @@ ansible-playbook -vvv mypackages.yml
 """
         }
         {
-            notes = r"""
-symlink works as expected
-this overrides as expected
-      """
+            override_interpeter_works = True
             disabled = True
             name = "mighty elephant"
             txtar = r"""
@@ -483,12 +473,7 @@ ansible-playbook -vvv mypackages.yml
 """
         }
         {
-            notes = r"""
-
-
-
-this works as expected
-      """
+            override_interpeter_works = True
             disabled = True
             name = "clever fox"
             txtar = r"""
@@ -558,10 +543,7 @@ ANSIBLE_CONFIG=./ansible.cfg ansible-playbook -vvv mypackages.yml
 this works to ovverride python.  With this, we correctly use python 3.12
 
       """
-            notes = r"""
-symlink works as expected
-this overrides as expected
-      """
+            override_interpeter_works = True
             disabled = True
             name = "energetic puppy"
             txtar = r"""
@@ -595,11 +577,7 @@ ANSIBLE_CONFIG=./ansible.cfg ansible-playbook -vvv mypackages.yml
 """
         }
         {
-            notes = r"""
-
-this fails to ovverride python
-
-      """
+            override_interpeter_works = False
             disabled = True
             name = "sneaky raccoon"
             txtar = r"""
@@ -633,13 +611,7 @@ ANSIBLE_CONFIG=./ansible.cfg ansible-playbook -vvv mypackages.yml
 """
         }
         {
-            notes = r"""
-
-this fails to override python
-
-trying to use python 3.12, but still it uses 3.8
-
-      """
+            override_interpeter_works = False
             disabled = True
             name = "brave wolf"
             txtar = r"""
@@ -675,16 +647,7 @@ ansible-playbook -vvv mypackages.yml
 """
         }
         {
-            notes = r"""
-
-
-this fails to override python
-
-trying to use python 3.12, but still it uses 3.8
-
-
-
-      """
+            override_interpeter_works = False
             disabled = True
             name = "friendly dolphin"
             txtar = r"""
