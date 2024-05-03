@@ -1,9 +1,27 @@
 {
+
+
+
+
+notes = r"""
+
+how to specify path to ansible.cfg
+
+
+https://docs.ansible.com/ansible/latest/reference_appendices/interpreter_discovery.html
+https://stackoverflow.com/a/62482559/1495086
+"""
+
+
+
+
+
+
+
     # each record should have a unique name.  here's a list of names you can use
     unique_ids = r"""
 lazy sloth
 fierce tiger
-humble hedgehog
 swift cheetah
 clumsy penguin
 cunning coyote
@@ -513,6 +531,7 @@ ansible-playbook -vvv mypackages.yml
             notes = r"""
 
       """
+            override_interpeter_works = False
             disabled = True
             name = "gentle giraffe"
             txtar = r"""
@@ -683,5 +702,63 @@ ansible-playbook -vvv mypackages.yml
 
 """
         }
+
+
+        ########################################################################################################
+        {
+            notes = r"""
+
+
+
+https://docs.ansible.com/ansible/latest/reference_appendices/config.html
+
+
+The configuration file
+Changes can be made and used in a configuration file which will be searched for in the following order:
+
+ANSIBLE_CONFIG (environment variable if set)
+
+ansible.cfg (in the current directory)
+
+~/.ansible.cfg (in the home directory)
+
+/etc/ansible/ansible.cfg
+
+Ansible will process the above list and use the first file found, all others are ignored.
+
+      """
+            override_interpeter_works = False
+            disabled = True
+            name = "humble hedgehog"
+            txtar = r"""
+-- ansible.cfg --
+[defaults]
+ansible_python_interpreter=/home/linuxbrew/.linuxbrew/opt/python@3.12/libexec/bin/python
+interpreter_python=/home/linuxbrew/.linuxbrew/opt/python@3.12/libexec/bin/python
+
+
+-- mypackages.yml --
+---
+- hosts: localhost
+
+  tasks:
+
+    - name: Debug current environment
+      debug:
+        var: ansible_python_version
+
+    - name: Install jq
+      apt:
+        name:
+          - jq
+        state: present
+
+-- run --
+ansible-playbook -vvv mypackages.yml
+
+"""
+        }
+
+
     ]
 }
