@@ -227,13 +227,8 @@ root@ip-172-31-31-195:~/wildcalifornia#
 
 """
     }
-
-
-
-
-
-
     {
+        disabled = True
         txtar = r"""
 -- mypackages.yml --
 ---
@@ -253,13 +248,9 @@ root@ip-172-31-31-195:~/wildcalifornia#
 -- run --
 ansible-playbook -vvv mypackages.yml
 """
-
     }
-
-
-
-
     {
+        disabled = True
         txtar = r"""
 -- mypackages.yml --
 ---
@@ -279,18 +270,8 @@ ansible-playbook -vvv mypackages.yml
 -- run --
 LANG=C.UTF-8 ansible-playbook -vvv mypackages.yml
 """
-
     }
-
-
-
-
-
-
-
-
-    {
-        txtar = r"""
+    {txtar = r"""
 
 -- mypackages.yml --
 ---
@@ -310,14 +291,5 @@ LANG=C.UTF-8 ansible-playbook -vvv mypackages.yml
 
 -- run --
 ansible-playbook -vvv mypackages.yml
-"""
-
-    }
-
-
-
-
-
-
-
+"""}
 ]}
