@@ -291,5 +291,39 @@ LANG=C.UTF-8 ansible-playbook -vvv mypackages.yml
 
 -- run --
 ansible-playbook -vvv mypackages.yml
-"""}
+"""
+
+}
+
+
+    {
+        disabled = True
+        txtar = r"""
+-- mypackages.yml --
+---
+- hosts: localhost
+  connection: local
+  become: true
+
+  vars:
+    ansible_python_interpreter: /home/linuxbrew/.linuxbrew/bin/python3
+
+  tasks:
+   - name: Install jq and nginx
+     ansible.builtin.package:
+       name:
+         - jq
+       state: present
+-- run --
+ansible-playbook -vvv mypackages.yml
+"""
+    }
+
+
+
+
+
+
+
+
 ]}
