@@ -321,6 +321,29 @@ ansible-playbook -vvv mypackages.yml
 
 
 
+    {
+        disabled = True
+        txtar = r"""
+-- mypackages.yml --
+---
+- hosts: localhost
+  vars:
+    #ansible_python_interpreter: "{{ lookup('env', 'HOME') }}/.linuxbrew/opt/python@3.12/libexec/bin/python"
+    ansible_python_interpreter: "/home/linuxbrew/.linuxbrew/Cellar/python@3.12/3.12.3/bin/python3.12"
+
+  tasks:
+    - name: Install jq
+      apt:
+        name:
+          - jq
+        state: present
+
+-- run --
+ansible-playbook -vvv mypackages.yml
+"""
+    }
+
+
 
 
 
