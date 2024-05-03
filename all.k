@@ -538,6 +538,8 @@ ANSIBLE_CONFIG=./ansible.cfg ansible-playbook -vvv mypackages.yml
     {
         notes = r"""
 
+this works to ovverride python.  With this, we correctly use python 3.12
+
       """
         disabled = True
         txtar = r"""
@@ -551,6 +553,48 @@ ANSIBLE_CONFIG=./ansible.cfg ansible-playbook -vvv mypackages.yml
 
   vars:
     ansible_python_interpreter: /home/linuxbrew/.linuxbrew/opt/python@3.12/libexec/bin/python
+
+  tasks:
+
+    - name: Debug current environment
+      debug:
+        var: ansible_python_version
+
+
+    - name: Install jq
+      apt:
+        name:
+          - jq
+        state: present
+
+-- run --
+ANSIBLE_CONFIG=./ansible.cfg ansible-playbook -vvv mypackages.yml
+
+"""
+    }
+
+
+
+
+
+
+    {
+        notes = r"""
+
+this fails to ovverride python
+
+      """
+        disabled = True
+        txtar = r"""
+
+
+
+
+-- mypackages.yml --
+---
+- hosts: localhost
+
+  vars:
     interpreter_python: /home/linuxbrew/.linuxbrew/opt/python@3.12/libexec/bin/python
 
   tasks:
@@ -571,6 +615,118 @@ ANSIBLE_CONFIG=./ansible.cfg ansible-playbook -vvv mypackages.yml
 
 """
     }
+
+
+
+
+    {
+        notes = r"""
+
+this fails to override python
+
+trying to use python 3.12, but still it uses 3.8
+
+      """
+        disabled = True
+        txtar = r"""
+
+
+-- ansible.cfg --
+[defaults]
+ansible_python_interpreter=/home/linuxbrew/.linuxbrew/opt/python@3.12/libexec/bin/python
+interpreter_python=/home/linuxbrew/.linuxbrew/opt/python@3.12/libexec/bin/python
+
+
+-- mypackages.yml --
+---
+- hosts: localhost
+
+  tasks:
+
+    - name: Debug current environment
+      debug:
+        var: ansible_python_version
+
+
+    - name: Install jq
+      apt:
+        name:
+          - jq
+        state: present
+
+-- run --
+export ANSIBLE_CONFIG=./ansible.cfg
+ansible-playbook -vvv mypackages.yml
+
+"""
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    {
+        notes = r"""
+
+
+this fails to override python
+
+trying to use python 3.12, but still it uses 3.8
+
+
+
+      """
+        disabled = True
+        txtar = r"""
+
+
+
+
+-- mypackages.yml --
+---
+- hosts: localhost
+
+  tasks:
+
+    - name: Debug current environment
+      debug:
+        var: ansible_python_version
+
+
+    - name: Install jq
+      apt:
+        name:
+          - jq
+        state: present
+
+-- run --
+
+export ANSIBLE_PYTHON_INTERPRETER=/home/linuxbrew/.linuxbrew/opt/python@3.12/libexec/bin/python
+ansible-playbook -vvv mypackages.yml
+
+
+"""
+    }
+
+
+
+
+
+
+
 
 
 
