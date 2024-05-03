@@ -13,6 +13,41 @@
 
 
 {
+
+
+disabled=True
+
+
+notes=r"""
+
+this fails with local error
+
+
++ ansible-playbook nginx.yml
+
+[WARNING]: No inventory was parsed, only implicit localhost is available
+[WARNING]: provided hosts list is empty, only localhost is available. Note that
+the implicit localhost does not match 'all'
+
+PLAY [localhost] ***************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [localhost]
+
+TASK [Install nginx] ***********************************************************
+An exception occurred during task execution. To see the full traceback, use -vvv. The error was: locale.Error: unsupported locale setting
+fatal: [localhost]: FAILED! => {"changed": false, "module_stderr": "Traceback (most recent call last):\n  File \"/root/.ansible/tmp/ansible-tmp-1714696897.8728821-6402-217287530767175/AnsiballZ_apt.py\", line 107, in <module>\n    _ansiballz_main()\n  File \"/root/.ansible/tmp/ansible-tmp-1714696897.8728821-6402-217287530767175/AnsiballZ_apt.py\", line 99, in _ansiballz_main\n    invoke_module(zipped_mod, temp_path, ANSIBALLZ_PARAMS)\n  File \"/root/.ansible/tmp/ansible-tmp-1714696897.8728821-6402-217287530767175/AnsiballZ_apt.py\", line 47, in invoke_module\n    runpy.run_module(mod_name='ansible.modules.apt', init_globals=dict(_module_fqn='ansible.modules.apt', _modlib_path=modlib_path),\n  File \"<frozen runpy>\", line 226, in run_module\n  File \"<frozen runpy>\", line 98, in _run_module_code\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/tmp/ansible_ansible.legacy.apt_payload_zkl_mwyz/ansible_ansible.legacy.apt_payload.zip/ansible/modules/apt.py\", line 1529, in <module>\n  File \"/tmp/ansible_ansible.legacy.apt_payload_zkl_mwyz/ansible_ansible.legacy.apt_payload.zip/ansible/modules/apt.py\", line 1237, in main\n  File \"/home/linuxbrew/.linuxbrew/opt/python@3.12/lib/python3.12/locale.py\", line 615, in setlocale\n    return _setlocale(category, locale)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nlocale.Error: unsupported locale setting\n", "module_stdout": "", "msg": "MODULE FAILURE\nSee stdout/stderr for the exact error", "rc": 1}
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0
+
+root@u:~/example-001#
+
+"""
+
+
+
+
 txtar = r"""
 -- nginx.yml --
 ---
@@ -33,11 +68,43 @@ ansible-playbook nginx.yml
 {
 
 
-notes = r"""
+disabled=True
+
+
+notes=r"""
+
 Example of how to install many packages in one call to ansible.builtin.package
 
 
+this fails with local error
+
+
++ ansible-playbook nginx.yml
+
+[WARNING]: No inventory was parsed, only implicit localhost is available
+[WARNING]: provided hosts list is empty, only localhost is available. Note that
+the implicit localhost does not match 'all'
+
+PLAY [localhost] ***************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [localhost]
+
+TASK [Install nginx] ***********************************************************
+An exception occurred during task execution. To see the full traceback, use -vvv. The error was: locale.Error: unsupported locale setting
+fatal: [localhost]: FAILED! => {"changed": false, "module_stderr": "Traceback (most recent call last):\n  File \"/root/.ansible/tmp/ansible-tmp-1714696897.8728821-6402-217287530767175/AnsiballZ_apt.py\", line 107, in <module>\n    _ansiballz_main()\n  File \"/root/.ansible/tmp/ansible-tmp-1714696897.8728821-6402-217287530767175/AnsiballZ_apt.py\", line 99, in _ansiballz_main\n    invoke_module(zipped_mod, temp_path, ANSIBALLZ_PARAMS)\n  File \"/root/.ansible/tmp/ansible-tmp-1714696897.8728821-6402-217287530767175/AnsiballZ_apt.py\", line 47, in invoke_module\n    runpy.run_module(mod_name='ansible.modules.apt', init_globals=dict(_module_fqn='ansible.modules.apt', _modlib_path=modlib_path),\n  File \"<frozen runpy>\", line 226, in run_module\n  File \"<frozen runpy>\", line 98, in _run_module_code\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/tmp/ansible_ansible.legacy.apt_payload_zkl_mwyz/ansible_ansible.legacy.apt_payload.zip/ansible/modules/apt.py\", line 1529, in <module>\n  File \"/tmp/ansible_ansible.legacy.apt_payload_zkl_mwyz/ansible_ansible.legacy.apt_payload.zip/ansible/modules/apt.py\", line 1237, in main\n  File \"/home/linuxbrew/.linuxbrew/opt/python@3.12/lib/python3.12/locale.py\", line 615, in setlocale\n    return _setlocale(category, locale)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nlocale.Error: unsupported locale setting\n", "module_stdout": "", "msg": "MODULE FAILURE\nSee stdout/stderr for the exact error", "rc": 1}
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0
+
+root@u:~/example-001#
+
 """
+
+
+
+
+
 
 txtar = r"""
 -- mypackages.yml --
