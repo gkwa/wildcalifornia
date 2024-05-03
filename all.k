@@ -291,11 +291,7 @@ LANG=C.UTF-8 ansible-playbook -vvv mypackages.yml
 
 -- run --
 ansible-playbook -vvv mypackages.yml
-"""
-
-}
-
-
+"""}
     {
         disabled = True
         txtar = r"""
@@ -318,21 +314,13 @@ ansible-playbook -vvv mypackages.yml
 ansible-playbook -vvv mypackages.yml
 """
     }
-
-
-
     {
-
-
-            notes = r"""
+        notes = r"""
 
 
 
 this works as expected
       """
-
-
-
         disabled = True
         txtar = r"""
 -- mypackages.yml --
@@ -353,20 +341,13 @@ this works as expected
 ansible-playbook -vvv mypackages.yml
 """
     }
-
-
-
-
     {
-
-      notes = r"""
+        notes = r"""
 
 
 
 this works as expected
       """
-
-
         disabled = True
         txtar = r"""
 -- mypackages.yml --
@@ -386,10 +367,4 @@ this works as expected
 ansible-playbook -vvv mypackages.yml
 """
     }
-
-
-
-
-
-
 ]}
