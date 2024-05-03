@@ -380,6 +380,11 @@ ansible-playbook -vvv mypackages.yml
 """
         }
         {
+            notes = r"""
+
+          this overrides as expected
+
+          """
             disabled = True
             name = "wise owl"
             txtar = r"""
@@ -412,10 +417,8 @@ ansible-playbook -vvv mypackages.yml
         }
         {
             notes = r"""
-
-
-
-real path, not symlink works as expected
+this overrides as expected
+real path works as expected
       """
             disabled = True
             name = "nimble gazelle"
@@ -449,10 +452,8 @@ ansible-playbook -vvv mypackages.yml
         }
         {
             notes = r"""
-
-
-
 symlink works as expected
+this overrides as expected
       """
             disabled = True
             name = "mighty elephant"
@@ -556,6 +557,10 @@ ANSIBLE_CONFIG=./ansible.cfg ansible-playbook -vvv mypackages.yml
 
 this works to ovverride python.  With this, we correctly use python 3.12
 
+      """
+            notes = r"""
+symlink works as expected
+this overrides as expected
       """
             disabled = True
             name = "energetic puppy"
